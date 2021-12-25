@@ -27,7 +27,7 @@ const isValid = (s) => {
     }
   }
 
-  return stack.length === 0; //Return wheter the stack is empty or not
+  return stack.length === 0; //Return whether the stack is empty or not
 };
 
 console.log(isValid("()"));
