@@ -5,13 +5,12 @@
  */
 var rotate = (nums, k) => {
   k = k % nums.length; //Reduce the number of iterations by running the loop for just k%nums.length times
-
-  for (let i = 0; i < k; i++) {
-    const popped = nums.pop(); //Pop the last element from the array
-    nums.unshift(popped); //Put the popped element to the start of the array
+  let arr = []; //Create an empty array
+  for (let i = 0; i < nums.length; i++) {
+    arr[(i + k) % nums.length] = nums[i]; //Traverse the nums array and simply store the element at the i+kth position of the new arr. Incase the i+kth position is greater than the size of the array, then the element must be stored at the position at sart which is returned by the (i_k)%nums.length
   }
 
-  return nums;
+  return arr;
 };
 
 console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3));
