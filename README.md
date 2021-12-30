@@ -1,3 +1,3 @@
 # Problems
 
-Daily log of problems that I am trying to solve on leetcode. It has the code explained line by line.
+Trying new approaches
