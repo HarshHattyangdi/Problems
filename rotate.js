@@ -3,14 +3,25 @@
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var rotate = (nums, k) => {
+const rotate = (nums, k) => {
   k = k % nums.length; //Reduce the number of iterations by running the loop for just k%nums.length times
-  let arr = []; //Create an empty array
-  for (let i = 0; i < nums.length; i++) {
-    arr[(i + k) % nums.length] = nums[i]; //Traverse the nums array and simply store the element at the i+kth position of the new arr. Incase the i+kth position is greater than the size of the array, then the element must be stored at the position at sart which is returned by the (i_k)%nums.length
-  }
 
-  return arr;
+  reverse(nums, 0, nums.length - 1); //Entirely reverse the array
+  reverse(nums, 0, k - 1); //Reverse the first k elements of the reversed array
+  reverse(nums, k, nums.length - 1); //Reverse the remaining elements of the resulting array
+
+  const reverse = (nums, start, end) => {
+    while (start < end) {
+      //Simplet swap function
+      let temp = nums[start];
+      nums[start] = nums[end];
+      nums[end] = temp;
+      start++; //Increase start
+      end--; //Decreae end
+    }
+
+    return nums;
+  };
 };
 
 console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3));
